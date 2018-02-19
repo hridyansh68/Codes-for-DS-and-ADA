@@ -46,7 +46,7 @@ int main(void)
         }
         else
         {
-            maxProfit +=(capacity/object[i].weight)*(object[i].profit);   //If weight of object is more than add the fraction of that object.
+            maxProfit +=(capacity/object[i].weight)*(object[i].profit);   //If weight of object is more than capacity, add the fraction of that object.
             capacity = 0;    //Now bag is completely full ,therefore set capacity zero.
             if(capacity == 0)
                 break;
