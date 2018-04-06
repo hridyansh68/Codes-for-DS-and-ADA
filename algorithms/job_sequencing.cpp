@@ -22,15 +22,13 @@ int main(void)
     }
     cout<<"Enter number of days you have to work : ";
     cin>>c;
-    int output[c] = {0};
+    int output[c];
+    for(i=0;i<c;i++)
+        output[i]=0;
     sort(job,job+N,cmp);
-    for(i=N-1;i>=0;i--)
-    {
-        cout<<job[i].profit<<" ";
-    }
-    cout<<endl;
-    int cnt = 0,k;
+    int cnt = 0;
     i = N-1;
+    int k;
     while(cnt != c)
     {
         if(output[job[i].deadline - 1] ==0)
@@ -48,7 +46,7 @@ int main(void)
             }
             if(k>=0)
             {
-                output[k] = job[i].profit - 1 ;
+                output[k] = job[i].profit;
                 i--;
                 cnt++;
             }
@@ -58,10 +56,13 @@ int main(void)
             }
         }
     }
+    long sum = 0;
     for(i=0;i<c;i++)
     {
         cout<<output[i]<<" ";
+        sum += output[i];
     }
+    cout<<endl<<"MAXIMUM PROFIT THAT CAN BE EARNED IN "<<c<<" "<<"DAYS IS: "<<sum;
     return 0;
 }
 
