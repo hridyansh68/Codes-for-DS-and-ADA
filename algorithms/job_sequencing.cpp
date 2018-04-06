@@ -24,16 +24,43 @@ int main(void)
     cin>>c;
     int output[c] = {0};
     sort(job,job+N,cmp);
-    int cnt = 0;
+    for(i=N-1;i>=0;i--)
+    {
+        cout<<job[i].profit<<" ";
+    }
+    cout<<endl;
+    int cnt = 0,k;
     i = N-1;
     while(cnt != c)
     {
         if(output[job[i].deadline - 1] ==0)
         {
             output[job[i].deadline - 1] = job[i].profit ;
+            i--;
             cnt++;
         }
-        else if()
+        else
+        {
+            k = job[i].deadline - 2 ;
+            while(output[k]!=0)
+            {
+                k--;
+            }
+            if(k>=0)
+            {
+                output[k] = job[i].profit - 1 ;
+                i--;
+                cnt++;
+            }
+            else
+            {
+                i--;
+            }
+        }
+    }
+    for(i=0;i<c;i++)
+    {
+        cout<<output[i]<<" ";
     }
     return 0;
 }
